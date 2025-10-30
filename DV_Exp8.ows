@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Normal dist" position="(150, 150)" />
+		<node id="1" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Bimodal dist" position="(300, 150)" />
+		<node id="2" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Right skewed" position="(450, 150)" />
+		<node id="3" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="Left skewed" position="(600, 150)" />
+		<node id="4" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="uniform dist" position="(750, 150)" />
+		<node id="5" name="Python Script" qualified_name="Orange.widgets.data.owpythonscript.OWPythonScript" project_name="Orange3" version="" title="custom" position="(900, 150)" />
+		<node id="6" name="File" qualified_name="Orange.widgets.data.owfile.OWFile" project_name="Orange3" version="" title="File" position="(146.0, 307.0)" />
+		<node id="7" name="Preprocess" qualified_name="Orange.widgets.data.owpreprocess.OWPreprocess" project_name="Orange3" version="" title="Preprocess" position="(296.0, 307.0)" />
+		<node id="8" name="k-Means" qualified_name="Orange.widgets.unsupervised.owkmeans.OWKMeans" project_name="Orange3" version="" title="k-Means" position="(446.0, 307.0)" />
+		<node id="9" name="Scatter Plot" qualified_name="Orange.widgets.visualize.owscatterplot.OWScatterPlot" project_name="Orange3" version="" title="Scatter Plot" position="(596.0, 307.0)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="6" sink_node_id="7" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="7" sink_node_id="8" source_channel="Preprocessed Data" sink_channel="Data" enabled="true" source_channel_id="preprocessed_data" sink_channel_id="data" />
+		<link id="2" source_node_id="8" sink_node_id="9" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="annotated_data" sink_channel_id="data" />
+	</links>
+	<annotations />
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Generate random data (Normal distribution)\ndata = np.random.normal(loc=50, scale=10, size=1000)\n\n# Plot the histogram\nplt.hist(data, bins=30, color='blue', alpha=0.7, edgecolor='black')\nplt.title('Normal Distribution Histogram')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="1" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Generate two normal distributions (two peaks)\ndata1 = np.random.normal(loc=30, scale=5, size=500)\ndata2 = np.random.normal(loc=70, scale=5, size=500)\n\n# Combine them to form a bimodal distribution\ndata = np.concatenate([data1, data2])\n\n# Plot the histogram\nplt.hist(data, bins=30, color='green', alpha=0.7, edgecolor='black')\nplt.title('Bimodal Distribution Histogram')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="2" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Generate right-skewed data using exponential distribution\ndata = np.random.exponential(scale=20, size=1000)\n\n# Plot histogram\nplt.hist(data, bins=30, color='red', alpha=0.7, edgecolor='black')\nplt.title('Right-Skewed Distribution Histogram')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="3" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Generate left-skewed data by taking negative of exponential distribution\ndata = -np.random.exponential(scale=20, size=1000)\n\n# Plot histogram\nplt.hist(data, bins=30, color='purple', alpha=0.7, edgecolor='black')\nplt.title('Left-Skewed Distribution Histogram')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="4" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import numpy as np\nimport matplotlib.pyplot as plt\n\n# Generate uniform distribution data\ndata = np.random.uniform(low=0, high=100, size=1000)\n\n# Plot histogram\nplt.hist(data, bins=30, color='orange', alpha=0.7, edgecolor='black')\nplt.title('Uniform Distribution Histogram')\nplt.xlabel('Value')\nplt.ylabel('Frequency')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="5" format="literal">{'controlAreaVisible': True, 'currentScriptIndex': 0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01o\x00\x00\x00r\x00\x00\x04\x90\x00\x00\x02\xd0\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01p\x00\x00\x00\x90\x00\x00\x04\x8f\x00\x00\x02\xcf', 'scriptLibrary': [{'name': 'Table from numpy', 'script': 'import numpy as np\nfrom Orange.data import Table, Domain, ContinuousVariable, DiscreteVariable\n\ndomain = Domain([ContinuousVariable("age"),\n                 ContinuousVariable("height"),\n                 DiscreteVariable("gender", values=("M", "F"))])\narr = np.array([\n  [25, 186, 0],\n  [30, 164, 1]])\nout_data = Table.from_numpy(domain, arr)\n', 'filename': None}], 'scriptText': "import matplotlib.pyplot as plt\n\n# Custom score ranges and their frequencies\nscore_ranges = ['0-25', '26-50', '51-75', '76-100', '101-125', '126-150']\nfrequencies = [150, 300, 600, 750, 150, 50]\n\n# Plot bar chart\nplt.bar(score_ranges, frequencies, color='skyblue', edgecolor='black')\nplt.title('Score Distribution Histogram')\nplt.xlabel('Score Range')\nplt.ylabel('Number of Students')\nplt.show()\n", 'splitterState': b'\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa1\x00\x00\x00a\x01\xff\xff\xff\xff\x01\x00\x00\x00\x02\x00', 'vimModeEnabled': False, '__version__': 2}</properties>
+		<properties node_id="6" format="pickle">gASVLAwAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZQojB5v
+cmFuZ2V3aWRnZXQudXRpbHMuZmlsZWRpYWxvZ3OUjApSZWNlbnRQYXRolJOUKYGUfZQojAdhYnNw
+YXRolIwpQzovVXNlcnMvdGhlb2YvRG93bmxvYWRzL3N0dWRlbnQtZGF0YS5jc3aUjAZwcmVmaXiU
+TowHcmVscGF0aJROjAV0aXRsZZSMAJSMBXNoZWV0lGgOjAtmaWxlX2Zvcm1hdJSMGE9yYW5nZS5k
+YXRhLmlvLkNTVlJlYWRlcpR1YmgGKYGUfZQoaAmMV0M6L1VzZXJzL3RoZW9mL0FwcERhdGEvTG9j
+YWwvUHJvZ3JhbXMvT3JhbmdlL0xpYi9zaXRlLXBhY2thZ2VzL09yYW5nZS9kYXRhc2V0cy9pcmlz
+LnRhYpRoC4wPc2FtcGxlLWRhdGFzZXRzlGgMjAhpcmlzLnRhYpRoDWgOaA9oDmgQTnViaAYpgZR9
+lChoCYxaQzovVXNlcnMvdGhlb2YvQXBwRGF0YS9Mb2NhbC9Qcm9ncmFtcy9PcmFuZ2UvTGliL3Np
+dGUtcGFja2FnZXMvT3JhbmdlL2RhdGFzZXRzL3RpdGFuaWMudGFilGgLaBVoDIwLdGl0YW5pYy50
+YWKUaA1oDmgPaA5oEE51YmgGKYGUfZQoaAmMWkM6L1VzZXJzL3RoZW9mL0FwcERhdGEvTG9jYWwv
+UHJvZ3JhbXMvT3JhbmdlL0xpYi9zaXRlLXBhY2thZ2VzL09yYW5nZS9kYXRhc2V0cy9ob3VzaW5n
+LnRhYpRoC2gVaAyMC2hvdXNpbmcudGFilGgNaA5oD2gOaBBOdWJoBimBlH2UKGgJjGBDOi9Vc2Vy
+cy90aGVvZi9BcHBEYXRhL0xvY2FsL1Byb2dyYW1zL09yYW5nZS9MaWIvc2l0ZS1wYWNrYWdlcy9P
+cmFuZ2UvZGF0YXNldHMvaGVhcnRfZGlzZWFzZS50YWKUaAtoFWgMjBFoZWFydF9kaXNlYXNlLnRh
+YpRoDWgOaA9oDmgQTnViaAYpgZR9lChoCYxhQzovVXNlcnMvdGhlb2YvQXBwRGF0YS9Mb2NhbC9Q
+cm9ncmFtcy9PcmFuZ2UvTGliL3NpdGUtcGFja2FnZXMvT3JhbmdlL2RhdGFzZXRzL2Jyb3duLXNl
+bGVjdGVkLnRhYpRoC2gVaAyMEmJyb3duLXNlbGVjdGVkLnRhYpRoDWgOaA9oDmgQTnViaAYpgZR9
+lChoCYxWQzovVXNlcnMvdGhlb2YvQXBwRGF0YS9Mb2NhbC9Qcm9ncmFtcy9PcmFuZ2UvTGliL3Np
+dGUtcGFja2FnZXMvT3JhbmdlL2RhdGFzZXRzL3pvby50YWKUaAtoFWgMjAd6b28udGFilGgNaA5o
+D2gOaBBOdWJljAtyZWNlbnRfdXJsc5RdlIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAA
+AAAB0wAAAG0AAAQsAAAC1gAAAdQAAACLAAAEKwAAAtUAAAAAAAAAAAYAAAAB1AAAAIsAAAQrAAAC
+1ZSMC3NoZWV0X25hbWVzlH2UjAZzb3VyY2WUSwCMA3VybJRoDowNZG9tYWluX2VkaXRvcpR9lIwL
+X192ZXJzaW9uX1+USwGMEGNvbnRleHRfc2V0dGluZ3OUXZSMFW9yYW5nZXdpZGdldC5zZXR0aW5n
+c5SMB0NvbnRleHSUk5QpgZR9lCiMBnZhbHVlc5R9lCiMCXZhcmlhYmxlc5RdlGgzfZRoP12UKF2U
+KIwGc2Nob29slIwUT3JhbmdlLmRhdGEudmFyaWFibGWUjBBEaXNjcmV0ZVZhcmlhYmxllJOUSwCM
+BkdQLCBNU5SJZV2UKIwDc2V4lGhHSwCMBEYsIE2UiWVdlCiMA2FnZZRoRYwSQ29udGludW91c1Zh
+cmlhYmxllJOUSwBoDohlXZQojAdhZGRyZXNzlGhHSwCMBFIsIFWUiWVdlCiMB2ZhbXNpemWUaEdL
+AIwIR1QzLCBMRTOUiWVdlCiMB1BzdGF0dXOUaEdLAIwEQSwgVJSJZV2UKIwETWVkdZRoT0sAaA6I
+ZV2UKIwERmVkdZRoT0sAaA6IZV2UKIwETWpvYpRoR0sAjClhdF9ob21lLCBoZWFsdGgsIG90aGVy
+LCBzZXJ2aWNlcywgdGVhY2hlcpSJZV2UKIwERmpvYpRoR0sAjClhdF9ob21lLCBoZWFsdGgsIG90
+aGVyLCBzZXJ2aWNlcywgdGVhY2hlcpSJZV2UKIwGcmVhc29ulGhHSwCMH2NvdXJzZSwgaG9tZSwg
+b3RoZXIsIHJlcHV0YXRpb26UiWVdlCiMCGd1YXJkaWFulGhHSwCMFWZhdGhlciwgbW90aGVyLCBv
+dGhlcpSJZV2UKIwKdHJhdmVsdGltZZRoT0sAaA6IZV2UKIwJc3R1ZHl0aW1llGhPSwBoDohlXZQo
+jAhmYWlsdXJlc5RoT0sAaA6IZV2UKIwJc2Nob29sc3VwlGhHSwCMB25vLCB5ZXOUiWVdlCiMBmZh
+bXN1cJRoR0sAjAdubywgeWVzlIllXZQojARwYWlklGhHSwCMB25vLCB5ZXOUiWVdlCiMCmFjdGl2
+aXRpZXOUaEdLAIwHbm8sIHllc5SJZV2UKIwHbnVyc2VyeZRoR0sAjAdubywgeWVzlIllXZQojAZo
+aWdoZXKUaEdLAIwHbm8sIHllc5SJZV2UKIwIaW50ZXJuZXSUaEdLAIwHbm8sIHllc5SJZV2UKIwI
+cm9tYW50aWOUaEdLAIwHbm8sIHllc5SJZV2UKIwGZmFtcmVslGhPSwBoDohlXZQojAhmcmVldGlt
+ZZRoT0sAaA6IZV2UKIwFZ29vdXSUaE9LAGgOiGVdlCiMBERhbGOUaE9LAGgOiGVdlCiMBFdhbGOU
+aE9LAGgOiGVdlCiMBmhlYWx0aJRoT0sAaA6IZV2UKIwIYWJzZW5jZXOUaE9LAGgOiGVdlCiMBnBh
+c3NlZJRoR0sAjAdubywgeWVzlIllZXNoNUsBdYwKYXR0cmlidXRlc5QojAZzY2hvb2yUXZQojAJH
+UJSMAk1TlGWGlIwDc2V4lF2UKIwBRpSMAU2UZYaUjANhZ2WUSwKGlIwHYWRkcmVzc5RdlCiMAVKU
+jAFVlGWGlIwHZmFtc2l6ZZRdlCiMA0dUM5SMA0xFM5RlhpSMB1BzdGF0dXOUXZQojAFBlIwBVJRl
+hpSMBE1lZHWUSwKGlIwERmVkdZRLAoaUjARNam9ilF2UKIwHYXRfaG9tZZSMBmhlYWx0aJSMBW90
+aGVylIwIc2VydmljZXOUjAd0ZWFjaGVylGWGlIwERmpvYpRdlCiMB2F0X2hvbWWUjAZoZWFsdGiU
+jAVvdGhlcpSMCHNlcnZpY2VzlIwHdGVhY2hlcpRlhpSMBnJlYXNvbpRdlCiMBmNvdXJzZZSMBGhv
+bWWUjAVvdGhlcpSMCnJlcHV0YXRpb26UZYaUjAhndWFyZGlhbpRdlCiMBmZhdGhlcpSMBm1vdGhl
+cpSMBW90aGVylGWGlIwKdHJhdmVsdGltZZRLAoaUjAlzdHVkeXRpbWWUSwKGlIwIZmFpbHVyZXOU
+SwKGlIwJc2Nob29sc3VwlF2UKIwCbm+UjAN5ZXOUZYaUjAZmYW1zdXCUXZQojAJub5SMA3llc5Rl
+hpSMBHBhaWSUXZQojAJub5SMA3llc5RlhpSMCmFjdGl2aXRpZXOUXZQojAJub5SMA3llc5RlhpSM
+B251cnNlcnmUXZQojAJub5SMA3llc5RlhpSMBmhpZ2hlcpRdlCiMAm5vlIwDeWVzlGWGlIwIaW50
+ZXJuZXSUXZQojAJub5SMA3llc5RlhpSMCHJvbWFudGljlF2UKIwCbm+UjAN5ZXOUZYaUjAZmYW1y
+ZWyUSwKGlIwIZnJlZXRpbWWUSwKGlIwFZ29vdXSUSwKGlIwERGFsY5RLAoaUjARXYWxjlEsChpSM
+BmhlYWx0aJRLAoaUjAhhYnNlbmNlc5RLAoaUjAZwYXNzZWSUXZQojAJub5SMA3llc5RlhpR0lIwF
+bWV0YXOUKYwKY2xhc3NfdmFyc5QpjBJtb2RpZmllZF92YXJpYWJsZXOUXZR1YmF1Lg==
+</properties>
+		<properties node_id="7" format="literal">{'autocommit': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x01Z\x00\x00\x00\x98\x00\x00\x04\xa5\x00\x00\x02\xaa\x00\x00\x01[\x00\x00\x00\xb6\x00\x00\x04\xa4\x00\x00\x02\xa9\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x01[\x00\x00\x00\xb6\x00\x00\x04\xa4\x00\x00\x02\xa9', 'storedsettings': {'name': '', 'preprocessors': [('orange.preprocess.scale', {}), ('orange.preprocess.impute', {})]}, '__version__': 2}</properties>
+		<properties node_id="8" format="literal">{'auto_commit': True, 'controlAreaVisible': True, 'k': 3, 'k_from': 2, 'k_to': 8, 'max_iterations': 300, 'n_init': 10, 'normalize': True, 'optimize_k': False, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x02\x0f\x00\x00\x00\xfd\x00\x00\x03\xda\x00\x00\x02E\x00\x00\x02\x10\x00\x00\x01\x1b\x00\x00\x03\xd9\x00\x00\x02D\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x02\x10\x00\x00\x01\x1b\x00\x00\x03\xd9\x00\x00\x02D', 'selection': None, 'smart_init': 0, '__version__': 2}</properties>
+		<properties node_id="9" format="pickle">gASVhAQAAAAAAAB9lCiMDWF0dHJfeF9pc19hYnOUiYwNYXR0cl95X2lzX2Fic5SJjAthdXRvX2Nv
+bW1pdJSIjAthdXRvX3NhbXBsZZSIjBJjb250cm9sQXJlYVZpc2libGWUiIwTc2F2ZWRXaWRnZXRH
+ZW9tZXRyeZRDQgHZ0MsAAwAAAAAA/wAAAHIAAAUAAAAC0AAAAQAAAACQAAAE/wAAAs8AAAAAAAAA
+AAYAAAABAAAAAJAAAAT/AAACz5SMCXNlbGVjdGlvbpROjBF0b29sdGlwX3Nob3dzX2FsbJSIjA92
+aXN1YWxfc2V0dGluZ3OUfZSMBWdyYXBolH2UKIwLYWxwaGFfdmFsdWWUS4CMDWNsYXNzX2RlbnNp
+dHmUiYwRaml0dGVyX2NvbnRpbnVvdXOUiYwLaml0dGVyX3NpemWUSwCME2xhYmVsX29ubHlfc2Vs
+ZWN0ZWSUiYwWb3J0aG9ub3JtYWxfcmVncmVzc2lvbpSJjAtwb2ludF93aWR0aJRLCowMc2hvd19l
+bGxpcHNllImMCXNob3dfZ3JpZJSJjAtzaG93X2xlZ2VuZJSIjA1zaG93X3JlZ19saW5llIl1jAtf
+X3ZlcnNpb25fX5RLBYwQY29udGV4dF9zZXR0aW5nc5RdlIwVb3Jhbmdld2lkZ2V0LnNldHRpbmdz
+lIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwKYXR0cl9jb2xvcpSMBnNjaG9vbJRLZYaU
+jAphdHRyX2xhYmVslE5K/v///4aUjAphdHRyX3NoYXBllE5K/v///4aUjAlhdHRyX3NpemWUTkr+
+////hpSMBmF0dHJfeJRoJEtlhpSMDGF0dHJfeF9sb3dlcpROSv7///+GlIwMYXR0cl94X3VwcGVy
+lE5K/v///4aUjAZhdHRyX3mUjARNZWR1lEtmhpSMDGF0dHJfeV9sb3dlcpROSv7///+GlIwMYXR0
+cl95X3VwcGVylE5K/v///4aUaAx9lGgZSwV1jAphdHRyaWJ1dGVzlH2UKGgkSwGMA3NleJRLAYwD
+YWdllEsCjAdhZGRyZXNzlEsBjAdmYW1zaXpllEsBjAdQc3RhdHVzlEsBaDNLAowERmVkdZRLAowE
+TWpvYpRLAYwERmpvYpRLAYwGcmVhc29ulEsBjAhndWFyZGlhbpRLAYwKdHJhdmVsdGltZZRLAowJ
+c3R1ZHl0aW1llEsCjAhmYWlsdXJlc5RLAowJc2Nob29sc3VwlEsBjAZmYW1zdXCUSwGMBHBhaWSU
+SwGMCmFjdGl2aXRpZXOUSwGMB251cnNlcnmUSwGMBmhpZ2hlcpRLAYwIaW50ZXJuZXSUSwGMCHJv
+bWFudGljlEsBjAZmYW1yZWyUSwKMCGZyZWV0aW1llEsCjAVnb291dJRLAowERGFsY5RLAowEV2Fs
+Y5RLAowGaGVhbHRolEsCjAhhYnNlbmNlc5RLAowGcGFzc2VklEsBdYwFbWV0YXOUfZQojAdDbHVz
+dGVylEsBjApTaWxob3VldHRllEsCdXViYXUu
+</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>
